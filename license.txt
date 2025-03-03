@@ -1,0 +1,4 @@
+This script along with the support scritps that come with it, such as the dict_hpot_anno.py, 
+is open for public viewing and usage but may not be modified, 
+distributed with modifications, or used for commercial purposes without 
+explicit permission from the author.
