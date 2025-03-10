@@ -123,7 +123,7 @@ def main():
         elif choice == "2":
             variant_file = input("Enter the path to the TSV file containing all variants: ")
             
-            variant_df = pd.read_csv(variant_file, sep='\t', dtype=str)
+            variant_df = pd.read_csv(variant_file, dtype=str)
             
             hpo_info = variant_df.iloc[:, 4].apply(get_hpo_info)
             
@@ -137,7 +137,7 @@ def main():
             
             descriptor = "_mapped_terms"
             
-            output_file = os.path.join(directory, f"{name}{descriptor}{ext}")
+            output_file = os.path.join(directory, f"{name}{descriptor}.tsv")
             
             print(f"Processing complete. Results saved to {output_file}")
             
@@ -148,9 +148,9 @@ def main():
             if truncate.lower() == "y":
                 keep_columns = list(range(0,5)) + [7, 9] + list(range(14,19)) + list(range(20,41))
                 filtered_df = variant_df.iloc[:, keep_columns]
-                filtered_df.to_csv(output_file, sep="\t", index=False)
+                filtered_df.to_csv(output_file, sep="\t", index=False, quoting=3)
             elif truncate.lower() == "n":
-                variant_df.to_csv(output_file, sep="\t", index=False)
+                variant_df.to_csv(output_file, sep="\t", index=False, quoting=3)
             else:
                 print("Invalid selection! Exiting...")
                 break
